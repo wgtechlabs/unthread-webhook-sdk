@@ -1,0 +1,48 @@
+{
+  "name": "@wgtechlabs/unthread-webhook-sdk",
+  "version": "0.1.0",
+  "description": "Official SDK for consuming Unthread webhook events from unthread-webhook-server",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "unthread",
+    "webhook",
+    "sdk",
+    "redis",
+    "events",
+    "support",
+    "ticketing"
+  ],
+  "author": "Waren Gonzaga <opensource@warengonzaga.com>",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wgtechlabs/unthread-webhook-sdk.git"
+  },
+  "peerDependencies": {
+    "redis": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "redis": "^4.7.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}
