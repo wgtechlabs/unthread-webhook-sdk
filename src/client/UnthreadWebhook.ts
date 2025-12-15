@@ -102,7 +102,10 @@ export class UnthreadWebhook {
    * Register a handler for conversation_updated events
    */
   on(event: 'conversation_updated', handler: ConversationUpdatedHandler): this;
-  on(event: string, handler: any): this {
+  on(
+    event: string,
+    handler: MessageCreatedHandler | ConversationCreatedHandler | ConversationUpdatedHandler
+  ): this {
     this.eventEmitter.on(event, handler);
     return this;
   }

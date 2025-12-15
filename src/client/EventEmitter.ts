@@ -47,12 +47,13 @@ export class EventEmitter {
    */
   async emit(event: UnthreadEvent): Promise<void> {
     const handlers = this.handlers.get(event.type) || [];
-    const allHandlers = [...handlers, ...this.anyHandlers];
+    const allHandlers: Array<EventHandler | UnthreadEventHandler> = [...handlers, ...this.anyHandlers];
 
     await Promise.all(
       allHandlers.map(async (handler) => {
         try {
-          await handler(event as any);
+          // Type-safe call: both EventHandler and UnthreadEventHandler accept UnthreadEvent
+          await (handler as UnthreadEventHandler)(event);
         } catch (error) {
           await this.emitError(error instanceof Error ? error : new Error(String(error)));
         }
